@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restaurante El Buen Sabor - Caja Registradora</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <!-- MODIFICACIÓN 1: encabezado con el nombre del restaurante y nueva paleta de colores -->
+    <header class="banner">
+        <h1>🍽️ El Buen Sabor</h1>
+        <p>Comida casera chapina · Pide tu combo y calcula tu cuenta</p>
+    </header>
+
+    <main class="contenedor">
+        <h2>🍕 Pide tu Combo 🍔</h2>
+
+        <form id="formularioRestaurante">
+            <!-- MODIFICACIÓN 2: nombre del cliente y cantidad de platos -->
+            <div class="seccion">
+                <label for="nombreCliente">Nombre del cliente:</label>
+                <input type="text" id="nombreCliente" required placeholder="Ej. María López">
+            </div>
+
+            <div class="seccion">
+                <label for="platoPrincipal">Elige tu plato principal:</label>
+                <select id="platoPrincipal" required>
+                    <option value="pizza">Pizza Familiar — Q60.00</option>
+                    <option value="hamburguesa">Hamburguesa con Queso — Q38.00</option>
+                    <option value="pepian">Pepián con Arroz — Q45.00</option>
+                    <option value="hilachas">Hilachas con Tortillas — Q42.00</option>
+                    <option value="tacos">Orden de Tacos — Q35.00</option>
+                </select>
+                <label for="cantidad" class="normal">Cantidad de platos:</label>
+                <input type="number" id="cantidad" min="1" max="20" value="1" required>
+            </div>
+
+            <div class="seccion">
+                <label>Tamaño de la bebida:</label>
+                <div class="opciones-inline">
+                    <input type="radio" id="bebidaP" name="tamanoBebida" value="pequena" checked>
+                    <label for="bebidaP" class="normal">Pequeña (+Q6.00)</label>
+
+                    <input type="radio" id="bebidaM" name="tamanoBebida" value="mediana">
+                    <label for="bebidaM" class="normal">Mediana (+Q9.00)</label>
+
+                    <input type="radio" id="bebidaG" name="tamanoBebida" value="grande">
+                    <label for="bebidaG" class="normal">Grande (+Q12.00)</label>
+                </div>
+            </div>
+
+            <div class="seccion">
+                <label>¿Deseas agregar extras?</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="extraPapas" value="papas">
+                        <label for="extraPapas" class="normal">Papas Fritas (+Q15.00)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="extraHelado" value="helado">
+                        <label for="extraHelado" class="normal">Helado de Vainilla (+Q11.00)</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODIFICACIÓN 3: propina opcional e IVA incluido en el recibo -->
+            <div class="seccion">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="propina">
+                    <label for="propina" class="normal">Agregar propina sugerida (10%)</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-verde">Calcular Cuenta y Guardar</button>
+        </form>
+
+        <div id="reciboRespuesta"></div>
+
+        <!-- Botones de IndexedDB -->
+        <div class="acciones-datos">
+            <button type="button" id="btnMostrar" class="btn-azul">📂 Mostrar datos</button>
+            <button type="button" id="btnLimpiar" class="btn-rojo">🗑️ Limpiar datos</button>
+        </div>
+
+        <div id="listaPedidos"></div>
+    </main>
+
+    <footer>Actividad 9 · Programación Web</footer>
+
+    <script src="programa.js"></script>
+</body>
+</html>
